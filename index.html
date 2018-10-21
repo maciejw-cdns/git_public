@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2018-10-21 nie 18:36 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Out of the box of manipulation (&#x2026;)</title>
-<!-- 2018-10-13 sob 23:39 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Maciej Wojtowicz" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Maciej Wojtowicz" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +177,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="mw-org-html-themes/org-html-themes/styles/bigblow/css/htmlize.css"/>
@@ -104,7 +196,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -153,27 +245,33 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">Blog</a>
+<li><a href="#org3413cb1">Blog</a>
 <ul>
-<li><a href="#sec-1-1"><font color="green">About me and this blog (click to expand)</font></a></li>
-<li><a href="#sec-1-2">13/10/2018 David Icke is visiting Poland (click to expand)</a></li>
+<li><a href="#org54edf9c"><font color="green">About me and this blog (click to expand/collapse)</font></a></li>
+<li><a href="#org022f687">13/10/2018 David Icke is visiting Poland (click to expand/collapse)</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">Emacs short tips</a>
+<li><a href="#orgbd8b2db">Emacs short tips</a>
 <ul>
-<li><a href="#sec-2-1">Nice looking presentation</a></li>
+<li><a href="#org99638ee">Nice looking presentation</a></li>
+</ul>
+</li>
+<li><a href="#org32a721a">Provide feedback</a>
+<ul>
+<li><a href="#orgda781ab">Contact me</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Blog</h2>
-<div class="outline-text-2" id="text-1">
-</div><div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1"><font color="green">About me and this blog (click to expand)</font></h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-org3413cb1" class="outline-2">
+<h2 id="org3413cb1">Blog</h2>
+<div class="outline-text-2" id="text-org3413cb1">
+</div>
+<div id="outline-container-org54edf9c" class="outline-3">
+<h3 id="org54edf9c"><font color="green">About me and this blog (click to expand/collapse)</font></h3>
+<div class="outline-text-3" id="text-org54edf9c">
 <p>
 Hi friends!
 </p>
@@ -184,7 +282,9 @@ I actually created this blog because of two main reasons:
 </p>
 
 <ul class="org-ul">
-<li>Combining alternative view with out of the box thinking
+<li><p>
+Combining alternative view with out of the box thinking
+</p>
 
 <p>
 I could not find any blog presenting clear alternative view about
@@ -200,16 +300,16 @@ that the structure of the world can change as we do not see people having brilli
 which we can follow with real admiration. My goal is not to be the one who is supposed to
 lead the people to finally wake up and revolutionize the world order. I am just going
 to share some non aggressive ideas and visions which will hopefully motivate you to act&#x2026;
-</p>
-</li>
+</p></li>
 
-<li>Playing with Emacs
+<li><p>
+Playing with Emacs
+</p>
 
 <p>
 Second reason is just playing with Emacs. I love working with plain text!
 Practicing Github is also useful to know.
-</p>
-</li>
+</p></li>
 </ul>
 
 <p>
@@ -252,9 +352,9 @@ That's it from me&#x2026; Enjoy and help yourself thinking out of the box&#x2026
 </p>
 </div>
 </div>
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">13/10/2018 David Icke is visiting Poland (click to expand)</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-org022f687" class="outline-3">
+<h3 id="org022f687">13/10/2018 David Icke is visiting Poland (click to expand/collapse)</h3>
+<div class="outline-text-3" id="text-org022f687">
 <p>
 TODO
 </p>
@@ -262,12 +362,13 @@ TODO
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Emacs short tips</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">Nice looking presentation</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgbd8b2db" class="outline-2">
+<h2 id="orgbd8b2db">Emacs short tips</h2>
+<div class="outline-text-2" id="text-orgbd8b2db">
+</div>
+<div id="outline-container-org99638ee" class="outline-3">
+<h3 id="org99638ee">Nice looking presentation</h3>
+<div class="outline-text-3" id="text-org99638ee">
 <p>
 Emacs allows you to make nice looking presentations
 which can effectively be displayed online.
@@ -284,11 +385,41 @@ Check out example here:
 </div>
 </div>
 </div>
+
+<div id="outline-container-org32a721a" class="outline-2">
+<h2 id="org32a721a">Provide feedback</h2>
+<div class="outline-text-2" id="text-org32a721a">
+</div>
+<div id="outline-container-orgda781ab" class="outline-3">
+<h3 id="orgda781ab">Contact me</h3>
+<div class="outline-text-3" id="text-orgda781ab">
+<p>
+If you have some comments and feedback about my blog, feel free
+to e-mail me. I resigned from embedding live comment boxes as
+I find them distracting and consequently pulling attention out of
+real focus on the essence of content being read. Bad stuff&#x2026;
+</p>
+
+<p>
+Nevertheless I am in favor on creative discussion obviously but it should be
+separated from reading. There are so many interaction islands all over
+the internet that there is no need to make the other here.
+</p>
+
+<p>
+Feel free to discuss my posts there.
+</p>
+
+<p>
+My e-mail is: &lt;TODO&gt;.
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Maciej Wojtowicz</p>
-<p class="date">Created: 2018-10-13 sob 23:39</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.2 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2018-10-21 nie 18:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
